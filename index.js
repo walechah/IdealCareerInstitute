@@ -1,16 +1,28 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxd7xZGFsvHkyzC7okmz9hxbAKDhLBkX5cn4iNuEd2ACA3EN_8xP3Rhflmo-F0H-Invgw/exec';
-const form = document.getElementById('contact-form');
-
-form.addEventListener('submit', e => {
+let form = document.getElementById("google-form");
+form.addEventListener("submit", (e) => {
   e.preventDefault();
-  fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-    .then(response => {
-      if (response.ok) {
-        alert("Thank you! Your form is submitted successfully.");
-        form.reset(); // Reset the form after successful submission
-      } else {
-        alert("Oops! Something went wrong. Please try again later.");
+  let data = new FormData(form);
+  fetch(
+    "https://script.google.com/macros/s/AKfycbyEf6TrDldjgYfmnKx0prld-E77vZS065Y-iX8JdUj9fVBnjP3El7LHHVVNokgDeU2I/exec",
+    {
+      method: "POST",
+      body: data,
+    }
+  )
+    .then((res) => res.text())
+    .then((data) => {
+      console.log(data);
+      if (data === "Success") {
+        Swal.fire("We'll Contact you soon !");
+
+        // Clear placeholders
+        document.getElementById("name").placeholder = "";
+        document.getElementById("mail").placeholder = "";
+        document.getElementById("mobile").placeholder = "";
+        document.getElementById("message").placeholder = "";
+        // Reset form fields
+        form.reset();
       }
     })
-    .catch(error => console.error('Error!', error.message));
+    .catch((error) => console.error("Error:", error));
 });
