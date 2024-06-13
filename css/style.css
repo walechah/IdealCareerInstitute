@@ -304,6 +304,11 @@
     }
   }
   
+  @media (max-width: 768px) {
+    a.display-4 {
+      font-size: 1.75rem; /* Adjust this value as needed to fit the text in a single line */
+    }
+  }
 
 /**/
 
