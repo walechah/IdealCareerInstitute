@@ -685,7 +685,7 @@ a.display-4:hover {
 
 /*** Footer ***/
 .footer {
-    background: linear-gradient(rgba(3, 27, 78, .3), rgba(3, 27, 78, .3)), url(../img/footer.png) center center no-repeat;
+    background: linear-gradient(#dc3545, #dc3545), url(../img/footer.png) center center no-repeat;
     background-size: contain;
 }
 
@@ -728,7 +728,7 @@ a.display-4:hover {
 }
 
 .copyright {
-    border-top: 1px dashed rgba(255, 255, 255, .2);
+    border-top: 1px dashed rgba(255, 255, 210, .2);
 }
 
 .copyright a {
