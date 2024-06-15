@@ -190,13 +190,15 @@
                   <div class="icon-box-light">
                     <i class="bi bi-award text-success"></i>
                   </div>
-                  <h1
-                    class="display-1 text-white mb-0"
-                    data-toggle="counter-up"
-                  >
-                    1999
-                  </h1>
                   <small class="fs-5 text-white">Established in</small>
+                  <h1
+  id="counter"
+  class="display-1 text-white mb-0"
+>
+  1999
+</h1>
+
+                  
                 </div>
               </div>
             </div>
@@ -217,7 +219,7 @@
                   class="about-fact btn-square flex-column rounded-circle bg-danger ms-sm-auto"
                 >
                   <p class="text-white mb-0">Toppers</p>
-                  <h1 class="text-white mb-0" data-toggle="counter-up">200</h1>
+                  <h1 class="text-white mb-0" data-toggle="counter-up">333</h1>
                 </div>
               </div>
               <div class="col-sm-6 text-start">
@@ -1347,6 +1349,23 @@
 
           <!-- Template Javascript -->
           <script src="js/main.js"></script>
+          <script>
+             function counterDown(start, end, elementId) {
+    let current = start;
+    const element = document.getElementById(elementId);
+
+    const timer = setInterval(() => {
+      element.textContent = current;
+      current--;
+      if (current < end) {
+        clearInterval(timer);
+      }
+    }, 100); // Change this value to control the speed of the countdown
+  }
+
+  // Initialize the counter
+  counterDown(2024, 1999, 'counter');
+          </script>
           <script>
             let form = document.getElementById("google-form");
             form.addEventListener("submit", (e) => {
