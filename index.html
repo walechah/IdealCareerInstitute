@@ -342,7 +342,7 @@
               <div class="row h-100 align-items-end">
                   <div class="col-12 wow fadeIn" data-wow-delay="0.3s">
                       <div class="d-flex align-items-center justify-content-center" style="min-height: 300px">
-                          <button type="button" class="btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
+                          <button type="button" class="btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/shorts/G0STxMb09Jk"data-bs-target="#videoModal">
                               <span></span>
                           </button>
                       </div>
@@ -1296,39 +1296,39 @@
   counterDown(2024, 1999, 'counter');
           </script>
           <script>
-            let form = document.getElementById("google-form");
-            form.addEventListener("submit", (e) => {
-                e.preventDefault();
-                let data = new FormData(form);
-                fetch(
-                    "https://script.google.com/macros/s/AKfycbyup0XiGJRkTjcX5F-no_ofXueqgjyOUghFHBzkeh6nhBs-fZ_LaGR06fBXTTaW54SX/exec",
-                    {
-                        method: "POST",
-                        body: data,
-                    }
-                )
-                    .then((res) => {
-                        if (!res.ok) {
-                            throw new Error("Network response was not ok");
-                        }
-                        return res.text();
-                    })
-                    .then((data) => {
-                        console.log(data);
-                        if (data === "Success") {
-                            Swal.fire("We'll Contact you soon !");
-                            form.reset();
-                        }
-                    })
-                    .catch((error) => {
-                        console.error("Error:", error);
-                        Swal.fire("Oops...", "Something went wrong!", "error");
-                    });
-            });
-        </script>
+   let form = document.getElementById("google-form");
+   form.addEventListener("submit", (e) => {
+       e.preventDefault();
+       let data = new FormData(form);
+   
+       let xhr = new XMLHttpRequest();
+       xhr.open("POST", "https://script.google.com/macros/s/AKfycbzZaYRgCqxqsSlbICExejUYWSi87cmR5DpmkGhQOBcREOjkyfimm-gTbDT5aVzcVpZE/exec");
+       xhr.onreadystatechange = function() {
+           if (xhr.readyState === XMLHttpRequest.DONE) {
+               if (xhr.status === 200) {
+                   let response = xhr.responseText;
+                   console.log(response);
+                   if (response === "Success") {
+                       Swal.fire("We'll Contact you soon!");
+                       form.reset();
+                   } else {
+                       Swal.fire("Oops...", `Unexpected response from the server: ${response}`, "error");
+                   }
+               } else {
+                   console.error("HTTP error! Status:", xhr.status);
+                   Swal.fire("Oops...", "Something went wrong!", "error");
+               }
+           }
+       };
+       xhr.send(data);
+   });
+   
+  </script>
+        
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         </formf>
       </div>
     </div>
   </body>
 </html>
+ss
